@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-content>
+    <div class="input-container">
+      <app-text-input label="Text 1" [(text)]="text1"></app-text-input>
+      <app-text-input label="Text 2" [(text)]="text2"></app-text-input>
+    </div>
+    <button mat-raised-button color="primary" (click)="compareTexts()">Compare Texts</button>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="diffResult">
+  <mat-card-title>Differences</mat-card-title>
+  <mat-card-content>
+    <app-diff-display [diff]="diffResult"></app-diff-display>
+  </mat-card-content>
+</mat-card>

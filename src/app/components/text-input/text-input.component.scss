@@ -1,0 +1,25 @@
+.custom-input {
+  width: 100%;
+}
+
+::ng-deep .custom-input .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+::ng-deep .custom-input .mat-form-field-outline {
+  background-color: white;
+}
+
+::ng-deep .custom-input .mat-form-field-flex {
+  padding: 0 !important;
+}
+
+::ng-deep .custom-input .mat-form-field-infix {
+  padding: 0.5em 0;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  padding: 8px !important;
+}

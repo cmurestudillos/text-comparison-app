@@ -1,0 +1,19 @@
+.update-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0078D4;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+button {
+  background-color: white;
+  color: #0078D4;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

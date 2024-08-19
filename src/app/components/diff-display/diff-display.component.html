@@ -1,0 +1,14 @@
+<div class="diff-container">
+  <table>
+    <tbody>
+      <tr *ngFor="let line of lines" [ngClass]="line.type">
+        <td class="line-number">{{ line.lineNumber }}</td>
+        <td class="line-number">{{ line.type !== 'removed' ? line.lineNumber : ' ' }}</td>
+        <td class="line-content">
+          <span class="change-type">{{ getChangeTypeSymbol(line.type) }}</span>
+          {{ line.content }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,47 @@
+.diff-container {
+  background-color: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 12px;
+  line-height: 20px;
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.line-number {
+  color: rgba(27, 31, 35, 0.3);
+  padding: 0 10px;
+  text-align: right;
+  width: 1%;
+  user-select: none;
+}
+.line-content {
+  padding: 0 10px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.change-type {
+  user-select: none;
+  margin-right: 8px;
+}
+.added {
+  background-color: #e6ffec;
+}
+.added .change-type {
+  color: #22863a;
+}
+.removed {
+  background-color: #ffebe9;
+}
+.removed .change-type {
+  color: #cb2431;
+}
+.unchanged {
+  background-color: #ffffff;
+}
+.unchanged .change-type {
+  color: rgba(27, 31, 35, 0.3);
+}
