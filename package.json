@@ -1,14 +1,15 @@
 {
   "name": "text-comparison-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && npm run deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prepare": "husky install",
-    "version-bump": "node version-bump.js"
+    "version-bump": "node version-bump.js",
+    "deploy": "npm run version-bump && vercel"
   },
   "private": true,
   "dependencies": {
