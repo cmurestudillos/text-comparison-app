@@ -8,9 +8,8 @@ describe('DiffDisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DiffDisplayComponent]
-    })
-    .compileComponents();
+      imports: [DiffDisplayComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DiffDisplayComponent);
     component = fixture.componentInstance;

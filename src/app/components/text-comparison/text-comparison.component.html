@@ -1,15 +1,30 @@
 <mat-card>
   <mat-card-content>
     <div class="input-container">
-      <app-text-input label="Text 1" [(text)]="text1"></app-text-input>
-      <app-text-input label="Text 2" [(text)]="text2"></app-text-input>
+      <app-text-input label="Texto original" [(text)]="text1"></app-text-input>
+      <app-text-input label="Texto modificado" [(text)]="text2"></app-text-input>
     </div>
-    <button mat-raised-button color="primary" (click)="compareTexts()">Compare Texts</button>
+    <button mat-raised-button color="primary" [disabled]="!canCompare" (click)="compareTexts()">
+      <mat-icon>compare_arrows</mat-icon>
+      Comparar textos
+    </button>
   </mat-card-content>
 </mat-card>
-<mat-card *ngIf="diffResult">
-  <mat-card-title>Differences</mat-card-title>
-  <mat-card-content>
-    <app-diff-display [diff]="diffResult"></app-diff-display>
-  </mat-card-content>
-</mat-card>
+@if (diffResult) {
+  <mat-card>
+    <mat-card-title>
+      <mat-icon>difference</mat-icon>
+      Diferencias
+    </mat-card-title>
+    <mat-card-content>
+      @if (hasNoDifferences) {
+        <p class="empty-state">
+          <mat-icon>check_circle</mat-icon>
+          Los textos son idénticos.
+        </p>
+      } @else {
+        <app-diff-display [diff]="diffResult"></app-diff-display>
+      }
+    </mat-card-content>
+  </mat-card>
+}

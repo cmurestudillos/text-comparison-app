@@ -1,0 +1,15 @@
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+minimumReleaseAgeExclude:
+  - '@angular-devkit/architect@0.2003.30 || 0.2102.17 || 0.2200.4'
+  - '@angular-devkit/build-angular@20.3.30 || 21.2.17 || 22.0.4'
+  - '@angular-devkit/build-webpack@0.2003.30 || 0.2102.17 || 0.2200.4'
+  - '@angular-devkit/core@20.3.30 || 21.2.17 || 22.0.4'
+  - '@angular-devkit/schematics@20.3.30 || 21.2.17 || 22.0.4'
+  - '@angular/build@20.3.30 || 21.2.17 || 22.0.4'
+  - '@angular/cli@20.3.30 || 21.2.17 || 22.0.4'
+  - '@ngtools/webpack@20.3.30 || 21.2.17 || 22.0.4'
+  - '@schematics/angular@20.3.30 || 21.2.17 || 22.0.4'
