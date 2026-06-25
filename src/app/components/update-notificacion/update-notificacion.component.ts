@@ -1,22 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-update-notificacion',
   standalone: true,
-  imports: [CommonModule],
+  imports: [MatButtonModule, MatIconModule],
   templateUrl: './update-notificacion.component.html',
-  styleUrl: './update-notificacion.component.scss'
+  styleUrl: './update-notificacion.component.scss',
 })
 export class UpdateNotificacionComponent implements OnInit {
-  updateAvailable = false;
+  private swUpdate = inject(SwUpdate);
 
-  constructor(private swUpdate: SwUpdate) {}
+  updateAvailable = false;
 
   ngOnInit() {
     if (this.swUpdate.isEnabled) {
-      this.swUpdate.versionUpdates.subscribe(event => {
+      this.swUpdate.versionUpdates.subscribe((event) => {
         if (event.type === 'VERSION_READY') {
           this.updateAvailable = true;
         }

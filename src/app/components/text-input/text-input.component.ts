@@ -7,12 +7,16 @@ import { MatInputModule } from '@angular/material/input';
   standalone: true,
   imports: [FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './text-input.component.html',
-  styleUrl: './text-input.component.scss'
+  styleUrl: './text-input.component.scss',
 })
 export class TextInputComponent {
   @Input() label: string = '';
   @Input() text: string = '';
   @Output() textChange = new EventEmitter<string>();
+
+  get charCount(): number {
+    return this.text.length;
+  }
 
   onTextChange(value: string) {
     this.textChange.emit(value);

@@ -1,4 +1,5 @@
 <mat-form-field appearance="outline" class="custom-input">
   <mat-label>{{ label }}</mat-label>
   <textarea matInput [(ngModel)]="text" (ngModelChange)="onTextChange($event)" rows="10"></textarea>
+  <mat-hint align="end">{{ charCount }} caracteres</mat-hint>
 </mat-form-field>

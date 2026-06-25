@@ -1,13 +1,28 @@
 <div class="app-container">
   <header>
-    <h1>Text Comparison App</h1>
+    <div class="brand">
+      <span class="brand-mark"><mat-icon>data_object</mat-icon></span>
+      <div class="brand-text">
+        <h1>Text Comparison App</h1>
+        <p class="tagline">Compara texto. Detecta diferencias al instante.</p>
+      </div>
+    </div>
+    <button
+      mat-icon-button
+      class="theme-toggle"
+      type="button"
+      [matTooltip]="theme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+      (click)="toggleTheme()"
+    >
+      <mat-icon>{{ theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
   </header>
   <main>
     <app-text-comparison></app-text-comparison>
   </main>
   <footer>
-    <p>&copy; {{ currentYear }} Carlos Mur. All rights reserved.</p>
-    <p>Version: {{ appVersion }}</p>
+    <p>&copy; {{ currentYear }} Carlos Mur</p>
+    <span class="version-chip">v{{ appVersion }}</span>
   </footer>
 </div>
 <app-update-notificacion></app-update-notificacion>

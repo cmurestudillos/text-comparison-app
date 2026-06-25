@@ -1,4 +1,10 @@
-<div *ngIf="updateAvailable" class="update-notification">
-  <p>A new version is available!</p>
-  <button (click)="updateApp()">Update Now</button>
-</div>
+@if (updateAvailable) {
+  <div class="update-notification">
+    <mat-icon class="update-icon">system_update</mat-icon>
+    <div class="update-text">
+      <p class="update-title">Nueva versión disponible</p>
+      <p class="update-subtitle">Actualiza para obtener las últimas mejoras.</p>
+    </div>
+    <button mat-flat-button color="primary" (click)="updateApp()">Actualizar</button>
+  </div>
+}

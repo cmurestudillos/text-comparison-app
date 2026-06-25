@@ -1,111 +1,145 @@
 // styles.scss
+@use '@angular/material' as mat;
 
-// Variables
+// ---------------------------------------------------------------------------
+// Tema Material 3: "dev/tech" — verde terminal como primario, cian como acento.
+// Oscuro por defecto; [data-theme="light"] lo sobreescribe.
+// ---------------------------------------------------------------------------
+html {
+  color-scheme: dark;
+
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$green-palette,
+        tertiary: mat.$cyan-palette,
+      ),
+      typography: (
+        plain-family:
+          'Inter, "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif',
+        brand-family:
+          'Inter, "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif',
+      ),
+      density: 0,
+    )
+  );
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$green-palette,
+        tertiary: mat.$cyan-palette,
+      ),
+    )
+  );
+}
+
+// Variables de diseño que no cubre el sistema de tokens de Material
 $mobile-breakpoint: 600px;
 $tablet-breakpoint: 1024px;
+$mono-font:
+  'JetBrains Mono', 'Fira Code', 'Cascadia Code', SFMono-Regular, Consolas, 'Liberation Mono',
+  Menlo, monospace;
+$radius-lg: 16px;
 
-// Colores
-$primary-color: #0078D4;
-$secondary-color: #106ebe;
-$background-color: #f0f0f0;
-$text-color: #333333;
-$footer-bg-color: #f3f2f1;
-$footer-text-color: #323130;
+// Colores de diff: Material no define semántica add/remove, los fijamos por tema
+html {
+  --diff-add-bg: rgba(46, 204, 113, 0.16);
+  --diff-add-fg: #4ade80;
+  --diff-remove-bg: rgba(248, 81, 73, 0.16);
+  --diff-remove-fg: #f87171;
+  --app-header-gradient: linear-gradient(135deg, #0f3d2e 0%, #0b5345 45%, #0a6e72 100%);
+  --app-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
 
+html[data-theme='light'] {
+  --diff-add-bg: rgba(46, 204, 113, 0.14);
+  --diff-add-fg: #1a7f37;
+  --diff-remove-bg: rgba(248, 81, 73, 0.12);
+  --diff-remove-fg: #cf222e;
+  --app-header-gradient: linear-gradient(135deg, #0a6e72 0%, #0b5345 55%, #0f3d2e 100%);
+  --app-shadow: 0 8px 24px rgba(15, 61, 46, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: $background-color;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  color: $text-color;
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
 }
 
-header {
-  background-color: $primary-color;
-  color: white;
-  padding: 1rem;
+body {
+  font-family:
+    Inter,
+    'Segoe UI Variable',
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    Roboto,
+    sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  .logo {
-    height: 40px;
-    margin-right: 1rem;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 1.5rem;
-    text-align: center;
-  }
-
-  @media (max-width: $mobile-breakpoint) {
-    flex-direction: column;
-
-    .logo {
-      margin-right: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 {
-      font-size: 1.2rem;
-    }
-  }
+  flex-direction: column;
+  min-height: 100vh;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 main {
   flex: 1;
-  padding: 2rem;
-  max-width: 800px;
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
-  box-sizing: border-box;
 
   @media (max-width: $mobile-breakpoint) {
-    padding: 1rem;
+    padding: 1.5rem 1rem 2rem;
   }
 }
 
-footer {
-  background-color: $footer-bg-color;
-  color: $footer-text-color;
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
-
-  p {
-    margin: 0.5rem 0;
-  }
+// Tarjetas
+.mat-mdc-card {
+  border-radius: $radius-lg !important;
+  box-shadow: var(--app-shadow) !important;
+  background: var(--mat-sys-surface-container) !important;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
 }
 
-// Componente de comparación de texto
+.mat-mdc-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+// Inputs de texto
 .input-container {
   display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
 
   @media (min-width: $tablet-breakpoint) {
     flex-direction: row;
 
     > * {
-      flex-basis: calc(50% - 10px);
+      flex-basis: calc(50% - 0.625rem);
     }
   }
 
   @media (max-width: $tablet-breakpoint - 1px) {
     flex-direction: column;
-    gap: 10px;
 
     > * {
       width: 100%;
@@ -113,114 +147,38 @@ footer {
   }
 }
 
-.text-input-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.mat-card {
-  margin-top: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-.mat-card-title {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 16px;
-  color: $primary-color;
-}
-
-.mat-form-field {
+.mat-mdc-form-field {
   width: 100%;
 }
 
 textarea {
-  min-height: 200px;
+  font-family: $mono-font;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  min-height: 220px;
   resize: vertical;
-}
-
-.mat-raised-button {
-  display: block;
-  margin: 20px auto;
-  min-width: 200px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-// Componente de visualización de diferencias
-pre {
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 4px;
-  overflow-x: auto;
-  font-size: 14px;
-  border: 1px solid #e0e0e0;
 
   @media (max-width: $mobile-breakpoint) {
-    font-size: 12px;
+    min-height: 160px;
   }
 }
 
-code {
-  font-family: 'Courier New', Courier, monospace;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+.mat-mdc-raised-button {
+  display: flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.5rem auto 0;
+  min-width: 220px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-.added {
-  background-color: #e6ffed;
-  color: #22863a;
-  padding: 2px 0;
-}
-
-.removed {
-  background-color: #ffeef0;
-  color: #cb2431;
-  padding: 2px 0;
-}
-
-.unchanged {
-  color: #24292e;
-  padding: 2px 0;
-}
-
-// Ajustes adicionales para el tema Azure Blue
-.mat-toolbar.mat-primary {
-  background: $primary-color;
-  color: white;
-}
-
-.mat-button.mat-primary,
-.mat-raised-button.mat-primary,
-.mat-flat-button.mat-primary {
-  background-color: $primary-color;
-  &:hover {
-    background-color: $secondary-color;
-  }
-}
-
-.mat-mdc-card{
-  margin-bottom: 16px;
-}
-
-// Ajustes responsivos adicionales
 @media (max-width: $mobile-breakpoint) {
-  .mat-card-title {
-    font-size: 18px;
-  }
-
-  .mat-card-content {
-    font-size: 14px;
-  }
-
-  .mat-raised-button {
-    font-size: 14px;
-    padding: 0.5em 1em;
-    min-width: 150px;
+  .mat-mdc-card-title {
+    font-size: 1.05rem;
   }
 
   textarea {
-    min-height: 150px;
+    font-size: 0.8125rem;
   }
 }

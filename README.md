@@ -1,5 +1,7 @@
 # Aplicación de Comparación de Textos
 
+🔗 **Demo:** [https://text-comparison-app.vercel.app](https://text-comparison-app.vercel.app)
+
 ## Descripción
 La Aplicación de Comparación de Textos es una Aplicación Web Progresiva (PWA) construida con Angular que permite a los usuarios comparar dos textos y visualizar las diferencias en un formato similar a la vista de commits de GitHub. Esta aplicación es perfecta para escritores, desarrolladores o cualquier persona que necesite identificar rápidamente cambios entre dos versiones de un texto.
 
@@ -11,7 +13,7 @@ La Aplicación de Comparación de Textos es una Aplicación Web Progresiva (PWA)
 - Incremento automático de versión con cada commit
 
 ## Tecnologías Utilizadas
-- Angular 17+
+- Angular 22
 - Angular Material
 - TypeScript
 - SCSS
@@ -19,10 +21,11 @@ La Aplicación de Comparación de Textos es una Aplicación Web Progresiva (PWA)
 - Biblioteca diff-match-patch para comparación de textos
 - Husky para hooks de git
 - semver para gestión de versiones
+- ESLint + Prettier para calidad de código
 
 ## Requisitos Previos
-- Node.js (versión 14.x o posterior)
-- npm (generalmente viene con Node.js)
+- Node.js (versión 20.x o posterior)
+- pnpm (`npm i -g pnpm`)
 
 ## Instalación
 1. Clona el repositorio:
@@ -35,21 +38,26 @@ La Aplicación de Comparación de Textos es una Aplicación Web Progresiva (PWA)
    ```
 3. Instala las dependencias:
    ```
-   npm install
+   pnpm install
    ```
 
 ## Ejecución de la Aplicación
 1. Para servidor de desarrollo:
    ```
-   ng serve
+   pnpm start
    ```
    Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
 2. Para construcción de producción:
    ```
-   ng build --prod
+   pnpm build
    ```
    Los artefactos de construcción se almacenarán en el directorio `dist/`.
+
+## Calidad de Código
+- `pnpm lint` — analiza el código con ESLint
+- `pnpm lint:fix` — corrige automáticamente lo que sea seguro
+- `pnpm format` — formatea el código con Prettier
 
 ## Uso
 1. Abre la aplicación en tu navegador web.

@@ -1,19 +1,58 @@
+@keyframes slide-in {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .update-notification {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #0078D4;
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  bottom: 1.5rem;
+  right: 1.5rem;
+  left: 1.5rem;
+  max-width: 380px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--mat-sys-surface-container-high);
+  color: var(--mat-sys-on-surface);
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  box-shadow: var(--app-shadow);
   z-index: 1000;
+  animation: slide-in 0.25s ease-out;
+
+  @media (max-width: 600px) {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
 }
-button {
-  background-color: white;
-  color: #0078D4;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
+
+.update-icon {
+  color: var(--mat-sys-tertiary);
+  flex-shrink: 0;
+}
+
+.update-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.update-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.update-subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--mat-sys-on-surface-variant);
 }

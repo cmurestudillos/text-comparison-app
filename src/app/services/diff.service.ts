@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Diff, diff_match_patch } from 'diff-match-patch';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DiffService {
   private dmp = new diff_match_patch();

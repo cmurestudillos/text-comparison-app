@@ -8,7 +8,7 @@ import { LineChange } from '../../interfaces/line-change.interface';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './diff-display.component.html',
-  styleUrl: './diff-display.component.scss'
+  styleUrl: './diff-display.component.scss',
 })
 export class DiffDisplayComponent implements OnChanges {
   @Input() diff: Diff[] = [];
@@ -31,7 +31,8 @@ export class DiffDisplayComponent implements OnChanges {
         const lineChange: LineChange = {
           type: type === -1 ? 'removed' : type === 1 ? 'added' : 'unchanged',
           content: lines[i],
-          lineNumber: type !== 1 ? leftLineNumber : rightLineNumber
+          leftLineNumber: type !== 1 ? leftLineNumber : null,
+          rightLineNumber: type !== -1 ? rightLineNumber : null,
         };
 
         if (type !== 1) leftLineNumber++;
@@ -44,9 +45,20 @@ export class DiffDisplayComponent implements OnChanges {
 
   getChangeTypeSymbol(type: string): string {
     switch (type) {
-      case 'added': return '+';
-      case 'removed': return '-';
-      default: return ' ';
+      case 'added':
+        return '+';
+      case 'removed':
+        return '-';
+      default:
+        return ' ';
     }
+  }
+
+  get addedCount(): number {
+    return this.lines.filter((line) => line.type === 'added').length;
+  }
+
+  get removedCount(): number {
+    return this.lines.filter((line) => line.type === 'removed').length;
   }
 }

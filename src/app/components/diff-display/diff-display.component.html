@@ -1,14 +1,20 @@
+<div class="diff-legend">
+  <span class="legend-badge added">+{{ addedCount }} añadidas</span>
+  <span class="legend-badge removed">-{{ removedCount }} eliminadas</span>
+</div>
 <div class="diff-container">
   <table>
     <tbody>
-      <tr *ngFor="let line of lines" [ngClass]="line.type">
-        <td class="line-number">{{ line.lineNumber }}</td>
-        <td class="line-number">{{ line.type !== 'removed' ? line.lineNumber : ' ' }}</td>
-        <td class="line-content">
-          <span class="change-type">{{ getChangeTypeSymbol(line.type) }}</span>
-          {{ line.content }}
-        </td>
-      </tr>
+      @for (line of lines; track line) {
+        <tr [ngClass]="line.type">
+          <td class="line-number">{{ line.leftLineNumber ?? ' ' }}</td>
+          <td class="line-number">{{ line.rightLineNumber ?? ' ' }}</td>
+          <td class="line-content">
+            <span class="change-type">{{ getChangeTypeSymbol(line.type) }}</span>
+            {{ line.content }}
+          </td>
+        </tr>
+      }
     </tbody>
   </table>
 </div>
